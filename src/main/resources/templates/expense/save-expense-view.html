@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <title>Save expense</title>
+        <link th:href="@{/static/styles.css}" rel="stylesheet">
+    </head>
+    <body>
+        <div th:fragment="saveForm" style="border: 5px inset white; border-radius: 5px; display: inline-block; vertical-align: middle;">
+            <div align="center">
+                <h2>Save expense</h2>
+                <form action="#" th:action="@{/expense/save}" th:object="${newExpense}" method="post">
+                    <table border="1">
+                        <tr>
+                            <td align="center"> <label>Title</label> </td>
+                            <td>
+                                <input type="text" th:field="*{title}"/>
+                            </td>
+                            <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red;">
+                                <p th:text="${err}"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Description</label> </td>
+                            <td>
+                                <input type="text" th:field="*{description}"/>
+                            </td>
+                            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red;">
+                                <p th:text="${err}"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Category</label> </td>
+                            <td>
+                                <select th:field="*{category}">
+                                    <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"></option>
+                                </select>
+                            </td>
+                            <td th:if="${#fields.hasErrors('category')}" th:errors="*{category}" style="color: red;">
+                                <p th:text="${err}"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Importance</label> </td>
+                            <td>
+                                <select th:field="*{importance}">
+                                    <option th:each="importance : ${importanceList}" th:value="${importance.name}" th:text="${importance.name}"></option>
+                                </select>
+                            </td>
+                            <td th:if="${#fields.hasErrors('importance')}" th:errors="*{importance}" style="color: red;">
+                                <p th:text="${err}"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Amount</label> </td>
+                            <td>
+                                <input type="number" min="0.00" max="1000000.00" step="0.01" th:field="*{amount}"/>
+                            </td>
+                            <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" style="color: red;">
+                                <p th:text="${err}"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Occurrence Date</label> </td>
+                            <td>
+                                <input type="date" th:field="*{occurrenceDate}"/>
+                            </td>
+                            <td th:if="${#fields.hasErrors('occurrenceDate')}" th:errors="*{occurrenceDate}" style="color: red;">
+                                <p th:text="${err}"></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <input type="submit" value="Submit"/>
+                </form>
+                <br>
+            </div>
+        </div>
+    </body>
+</html>

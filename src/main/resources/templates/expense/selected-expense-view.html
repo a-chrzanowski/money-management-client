@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <title>Selected expense</title>
+    </head>
+    <body>
+        <div align="center" th:fragment="selectedExpenseFragment" style="border: 5px inset white; border-radius: 5px;">
+            <h3>Selected expense</h3>
+            <div>
+                <form action="#" th:action="@{'/expense/delete/{id}'(id=${selectedExpense.id})}" th:method="post">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </div>
+            <br>
+                <table border="1">
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Importance</th>
+                        <th>Occurrence Date</th>
+                        <th>Created Date</th>
+                    </tr>
+                    <tr>
+                        <td th:text="${selectedExpense.id}"></td>
+                        <td th:text="${selectedExpense.title}"></td>
+                        <td th:text="${selectedExpense.amount}"></td>
+                        <td th:text="${selectedExpense.description}"></td>
+                        <td th:text="${selectedExpense.category}"></td>
+                        <td th:text="${selectedExpense.importance}"></td>
+                        <td th:text="${selectedExpense.occurrenceDate}"></td>
+                        <td th:text="${selectedExpense.createdDate}"></td>
+                    </tr>
+                </table>
+            <br>
+        </div>
+    </body>
+</html>

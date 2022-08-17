@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <title>All expenses</title>
+    </head>
+    <body style="background-color:#666666" text="white">
+        <h2 align="center">Expenses Client</h2>
+        <div th:replace="expense/save-expense-view :: saveForm"></div>
+        <div style="display: inline-block; vertical-align: top;">
+            <div th:replace="expense/selected-expense-view :: selectedExpenseFragment"></div>
+            <div align="center" style="border: 5px inset white; border-radius: 5px;">
+                <h3>All expenses</h3>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Title</th>
+                            <th>Value</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Importance</th>
+                            <th>Occurrence Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="expense : ${expenses}">
+                            <td th:text="${expenseStat.count}"></td>
+                            <td>
+                                <a th:href="@{'/expense/{id}'(id=${expense.id})}" th:text="${expense.title}" style="color: white;"></a>
+                            </td>
+                            <td th:text="${expense.amount}"></td>
+                            <td th:text="${expense.description}"></td>
+                            <td th:text="${expense.category}"></td>
+                            <td th:text="${expense.importance}"></td>
+                            <td th:text="${expense.occurrenceDate}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+            </div>
+        </div>
+    </body>
+</html>
