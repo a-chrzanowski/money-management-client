@@ -14,8 +14,8 @@ spring:
             redirect-uri: ${OAUTH2_REDIRECT_URI}
             scope: ${OAUTH2_SCOPE}
             client-name: ${OAUTH2_CLIENT_NAME}
-          provider:
-            spring:
-              issuer-uri: ${OAUTH2_ISSUER_URI}
+        provider:
+          spring:
+            issuer-uri: ${OAUTH2_ISSUER_URI}
 
 expenseServiceClientRegistrationId: ${EXPENSE_SERVICE_CLIENT_REGISTRATION_ID}
