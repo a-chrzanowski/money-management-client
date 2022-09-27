@@ -11,6 +11,7 @@ env:
 jobs:
   build-jar:
     env:
+      EXPENSE_SERVICE_URL: ${{ secrets.EXPENSE_SERVICE_URL }}
       OAUTH2_PROVIDER: ${{ secrets.OAUTH2_PROVIDER }}
       OAUTH2_CLIENT_ID: ${{ secrets.OAUTH2_CLIENT_ID }}
       OAUTH2_CLIENT_SECRET: ${{ secrets.OAUTH2_CLIENT_SECRET }}
