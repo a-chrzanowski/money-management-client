@@ -7,4 +7,5 @@ ___  ___                            ___  ___                                    
                               __/ |                                __/ |
                              |___/                                |___/
 ${application.title} ${application.version}
+
 Powered by Spring Boot ${spring-boot.version}
