@@ -19,3 +19,4 @@ spring:
             issuer-uri: ${OAUTH2_ISSUER_URI}
 
 expenseServiceClientRegistrationId: ${EXPENSE_SERVICE_CLIENT_REGISTRATION_ID}
+#TODO run auth service on vps and then build client app

@@ -11,7 +11,7 @@
 	<groupId>pl.achrzanowski</groupId>
 	<artifactId>money-management-servlet-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>money-management-servlet-client</name>
+	<name>money-management-client</name>
 	<description>Money Management client application</description>
 	<properties>
 		<java.version>17</java.version>

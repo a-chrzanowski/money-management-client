@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.BUILD_NAME }}
-          path: /home/runner/work/money-management-servlet-client/money-management-servlet-client/target/money-management-servlet-client-*.jar
+          path: /home/runner/work/money-management-client/money-management-client/target/money-management-client-*.jar
 
   build-and-push-docker-image:
 
