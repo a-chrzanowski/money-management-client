@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.achrzanowski</groupId>
-	<artifactId>money-management-servlet-client</artifactId>
+	<artifactId>money-management-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>money-management-client</name>
 	<description>Money Management client application</description>
