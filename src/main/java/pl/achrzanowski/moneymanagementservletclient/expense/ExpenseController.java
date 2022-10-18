@@ -33,11 +33,6 @@ public class ExpenseController {
 
     private final Map<String, Object> model = new HashMap<>();
 
-    @GetMapping("/")
-    public String redirect(){
-        return "redirect:/expense/all";
-    }
-
     @GetMapping("/expense/all")
     public ModelAndView getAllView(@RegisteredOAuth2AuthorizedClient("expense-client-authorization-code") OAuth2AuthorizedClient authorizedClient){
         List<Expense> expenses = expenseService.getExpenses();
