@@ -14,14 +14,14 @@
 
 <body>
     <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <div class="container-fluid" style="max-width:600px">
+        <div id="login_panel" class="container-fluid" style="max-width:600px">
             <div id="header" class="container-fluid p-5 bg-success text-white text-center">
                 <h1>Money Management</h1>
             </div>
             <div id="sign_buttons" class="container-fluid p-5 border bg-light">
                 <div class="d-grid gap-3">
                     <a type="button" class="btn btn-outline-success btn-lg" th:href="@{/expense/all}">Sign in</a>
-                    <a type="button" class="btn btn-outline-success btn-lg" th:href="@{/register}">Sign up</a>
+                    <a type="button" class="btn btn-outline-success btn-lg" th:href="@{/registration}">Sign up</a>
                 </div>
             </div>
         </div>

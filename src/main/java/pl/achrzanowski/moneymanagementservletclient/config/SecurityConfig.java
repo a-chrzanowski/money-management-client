@@ -19,6 +19,7 @@ public class SecurityConfig {
                 .authorizeRequests(
                         authorizeRequests -> authorizeRequests
                                 .antMatchers("/").permitAll()
+                                .antMatchers("/registration/**").permitAll()
                                 .antMatchers("/content/**").permitAll()
                                 .anyRequest().authenticated())
                 .oauth2Login(oauth2Login ->
