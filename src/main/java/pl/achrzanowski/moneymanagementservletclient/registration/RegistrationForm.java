@@ -2,8 +2,9 @@ package pl.achrzanowski.moneymanagementservletclient.registration;
 
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import pl.achrzanowski.moneymanagementservletclient.registration.validation.FieldsValueMatch;
+import pl.achrzanowski.moneymanagementservletclient.validation.FieldsValueMatch;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
@@ -34,5 +35,11 @@ public class RegistrationForm {
     private String repeatedPassword;
     @AssertTrue(message = "- Confirm to continue")
     private Boolean isAwareOfDataInsecurity;
+
+    public void encodePassword(){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        this.password = bCryptPasswordEncoder.encode(this.password);
+        this.repeatedPassword = bCryptPasswordEncoder.encode(this.repeatedPassword);
+    }
 }
 

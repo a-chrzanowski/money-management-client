@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.registration.validation;
+package pl.achrzanowski.moneymanagementservletclient.validation;
 
 import org.springframework.beans.BeanWrapperImpl;
 

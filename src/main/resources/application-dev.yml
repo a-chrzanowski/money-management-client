@@ -1,21 +1,34 @@
 expenseService:
   url: ${EXPENSE_SERVICE_URL}
 
+registrationService:
+  url: ${REGISTRATION_SERVICE_URL}
+
 spring:
+  mvc:
+    static-path-pattern: /content/**
   security:
     oauth2:
       client:
         registration:
-          expense-client-authorization-code:
+          expense-service-authorization-code:
             provider: ${OAUTH2_PROVIDER}
-            client-id: ${OAUTH2_CLIENT_ID}
-            client-secret: ${OAUTH2_CLIENT_SECRET}
-            authorization-grant-type: ${OAUTH2_AUTHORIZATION_GRANT_TYPE}
-            redirect-uri: ${OAUTH2_REDIRECT_URI}
-            scope: ${OAUTH2_SCOPE}
-            client-name: ${OAUTH2_CLIENT_NAME}
+            client-id: ${EXPENSE_SERVICE_AUTH_CODE_CLIENT_ID}
+            client-secret: ${EXPENSE_SERVICE_AUTH_CODE_CLIENT_SECRET}
+            authorization-grant-type: ${EXPENSE_SERVICE_AUTH_CODE_AUTH_GRANT_TYPE}
+            redirect-uri: ${EXPENSE_SERVICE_AUTH_CODE_REDIRECT_URI}
+            scope: ${EXPENSE_SERVICE_AUTH_CODE_SCOPE}
+            client-name: ${EXPENSE_SERVICE_AUTH_CODE_CLIENT_NAME}
+          registration-service-client-credentials:
+            provider: ${OAUTH2_PROVIDER}
+            client-id: ${REGISTRATION_SERVICE_CLIENT_CREDENTIALS_CLIENT_ID}
+            client-name: ${REGISTRATION_SERVICE_CLIENT_CREDENTIALS_CLIENT_NAME}
+            client-secret: ${REGISTRATION_SERVICE_CLIENT_CREDENTIALS_SECRET}
+            authorization-grant-type: ${REGISTRATION_SERVICE_CLIENT_CREDENTIALS_AUTH_GRANT_TYPE}
+            scope: ${REGISTRATION_SERVICE_CLIENT_CREDENTIALS_CLIENT_SCOPE}
         provider:
           spring:
             issuer-uri: ${OAUTH2_ISSUER_URI}
 
 expenseServiceClientRegistrationId: ${EXPENSE_SERVICE_CLIENT_REGISTRATION_ID}
+registrationServiceClientRegistrationId: ${REGISTRATION_SERVICE_CLIENT_REGISTRATION_ID}

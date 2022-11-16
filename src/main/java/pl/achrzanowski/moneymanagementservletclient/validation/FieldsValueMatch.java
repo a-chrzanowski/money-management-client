@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.registration.validation;
+package pl.achrzanowski.moneymanagementservletclient.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

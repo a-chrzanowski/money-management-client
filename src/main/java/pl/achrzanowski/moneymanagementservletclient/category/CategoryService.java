@@ -1,7 +1,6 @@
 package pl.achrzanowski.moneymanagementservletclient.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,14 +14,16 @@ import static org.springframework.security.oauth2.client.web.reactive.function.c
 public class CategoryService {
 
     @Autowired
-    @Qualifier("expenseServiceWebClient")
     private WebClient webClient;
+
+    @Value("${expenseService.url}")
+    private String expenseServiceUrl;
 
     @Value("${expenseServiceClientRegistrationId}")
     private String expenseServiceClientRegistrationId;
 
     public List<CategoryDTO> getCategories(){
-        return webClient.get().uri("/category")
+        return webClient.get().uri(expenseServiceUrl + "/category")
                 .attributes(clientRegistrationId(expenseServiceClientRegistrationId))
                 .retrieve()
                 .bodyToFlux(CategoryDTO.class)

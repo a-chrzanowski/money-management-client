@@ -1,7 +1,6 @@
 package pl.achrzanowski.moneymanagementservletclient.expense;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Controller;
@@ -34,7 +33,7 @@ public class ExpenseController {
     private final Map<String, Object> model = new HashMap<>();
 
     @GetMapping("/expense/all")
-    public ModelAndView getAllView(@RegisteredOAuth2AuthorizedClient("expense-client-authorization-code") OAuth2AuthorizedClient authorizedClient){
+    public ModelAndView getAllView(@RegisteredOAuth2AuthorizedClient("expense-service-authorization-code") OAuth2AuthorizedClient authorizedClient){
         List<Expense> expenses = expenseService.getExpenses();
 
         if(!model.containsKey("selectedExpense"))

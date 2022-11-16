@@ -1,6 +1,5 @@
-package pl.achrzanowski.moneymanagementservletclient.expense;
+package pl.achrzanowski.moneymanagementservletclient.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
@@ -13,17 +12,13 @@ import org.springframework.security.oauth2.client.web.reactive.function.client.S
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-public class ExpenseServiceWebClientConfig {
+public class WebClientConfig {
 
-    @Value("${expenseService.url}")
-    private String expenseServiceUrl;
-
-    @Bean(name = "expenseServiceWebClient")
+    @Bean
     public WebClient webClient(OAuth2AuthorizedClientManager oAuth2AuthorizedClientManager){
         ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2Client =
                 new ServletOAuth2AuthorizedClientExchangeFilterFunction(oAuth2AuthorizedClientManager);
         return WebClient.builder()
-                .baseUrl(expenseServiceUrl)
                 .apply(oauth2Client.oauth2Configuration())
                 .build();
     }
@@ -31,9 +26,11 @@ public class ExpenseServiceWebClientConfig {
     @Bean
     public OAuth2AuthorizedClientManager oAuth2AuthorizedClientManager(
             ClientRegistrationRepository clientRegistrationRepository,
-            OAuth2AuthorizedClientRepository authorizedClientRepository) {
+            OAuth2AuthorizedClientRepository authorizedClientRepository
+    ) {
         OAuth2AuthorizedClientProvider authorizedClientProvider =
                 OAuth2AuthorizedClientProviderBuilder.builder()
+                        .clientCredentials()
                         .authorizationCode()
                         .refreshToken()
                         .build();
