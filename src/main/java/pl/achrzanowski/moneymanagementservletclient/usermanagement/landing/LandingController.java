@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.landing;
+package pl.achrzanowski.moneymanagementservletclient.usermanagement.landing;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

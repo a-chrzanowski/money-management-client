@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.category;
+package pl.achrzanowski.moneymanagementservletclient.expensemanagement.category;
 
 import lombok.Data;
 

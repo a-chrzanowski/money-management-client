@@ -46,3 +46,7 @@ p {
 .tooltip-form:hover:before {
   display:block;
 }
+
+.reload {
+  font-family: Lucida Sans Unicode
+}

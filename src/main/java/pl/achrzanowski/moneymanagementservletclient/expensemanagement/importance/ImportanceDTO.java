@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.importance;
+package pl.achrzanowski.moneymanagementservletclient.expensemanagement.importance;
 
 import lombok.Data;
 

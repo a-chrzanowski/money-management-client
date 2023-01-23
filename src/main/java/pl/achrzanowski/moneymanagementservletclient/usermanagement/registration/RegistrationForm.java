@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.registration;
+package pl.achrzanowski.moneymanagementservletclient.usermanagement.registration;
 
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
@@ -35,6 +35,8 @@ public class RegistrationForm {
     private String repeatedPassword;
     @AssertTrue(message = "- Confirm to continue")
     private Boolean isAwareOfDataInsecurity;
+    @NotEmpty(message = "- Fill verification code")
+    private String captchaVerificationCode;
 
     public void encodePassword(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();

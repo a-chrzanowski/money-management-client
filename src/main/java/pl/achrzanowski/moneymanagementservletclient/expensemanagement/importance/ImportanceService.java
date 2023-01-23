@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.category;
+package pl.achrzanowski.moneymanagementservletclient.expensemanagement.importance;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +11,7 @@ import java.util.List;
 import static org.springframework.security.oauth2.client.web.reactive.function.client.ServerOAuth2AuthorizedClientExchangeFilterFunction.clientRegistrationId;
 
 @Service
-public class CategoryService {
+public class ImportanceService {
 
     @Autowired
     private WebClient webClient;
@@ -22,14 +22,15 @@ public class CategoryService {
     @Value("${expenseServiceClientRegistrationId}")
     private String expenseServiceClientRegistrationId;
 
-    public List<CategoryDTO> getCategories(){
-        return webClient.get().uri(expenseServiceUrl + "/category")
+    public List<ImportanceDTO> getImportanceList(){
+        return webClient.get().uri(expenseServiceUrl + "/importance")
                 .attributes(clientRegistrationId(expenseServiceClientRegistrationId))
                 .retrieve()
-                .bodyToFlux(CategoryDTO.class)
+                .bodyToFlux(ImportanceDTO.class)
                 .collectList()
                 .onErrorReturn(new ArrayList<>())
                 .block();
     }
+
 
 }

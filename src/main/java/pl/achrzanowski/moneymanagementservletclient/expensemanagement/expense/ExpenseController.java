@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.expense;
+package pl.achrzanowski.moneymanagementservletclient.expensemanagement.expense;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.achrzanowski.moneymanagementservletclient.category.CategoryService;
-import pl.achrzanowski.moneymanagementservletclient.importance.ImportanceService;
+import pl.achrzanowski.moneymanagementservletclient.expensemanagement.category.CategoryService;
+import pl.achrzanowski.moneymanagementservletclient.expensemanagement.importance.ImportanceService;
 
 import javax.validation.Valid;
 import java.util.HashMap;

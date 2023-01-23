@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.expense;
+package pl.achrzanowski.moneymanagementservletclient.expensemanagement.expense;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
