@@ -1,4 +1,4 @@
-package pl.achrzanowski.moneymanagementservletclient.expense;
+package pl.achrzanowski.moneymanagementservletclient.expensemanagement.expense;
 
 import lombok.Data;
 

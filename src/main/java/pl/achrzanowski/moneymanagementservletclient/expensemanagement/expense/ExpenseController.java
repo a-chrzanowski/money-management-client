@@ -1,7 +1,6 @@
-package pl.achrzanowski.moneymanagementservletclient.expense;
+package pl.achrzanowski.moneymanagementservletclient.expensemanagement.expense;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Controller;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.achrzanowski.moneymanagementservletclient.category.CategoryService;
-import pl.achrzanowski.moneymanagementservletclient.importance.ImportanceService;
+import pl.achrzanowski.moneymanagementservletclient.expensemanagement.category.CategoryService;
+import pl.achrzanowski.moneymanagementservletclient.expensemanagement.importance.ImportanceService;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -33,13 +32,8 @@ public class ExpenseController {
 
     private final Map<String, Object> model = new HashMap<>();
 
-    @GetMapping("/")
-    public String redirect(){
-        return "redirect:/expense/all";
-    }
-
     @GetMapping("/expense/all")
-    public ModelAndView getAllView(@RegisteredOAuth2AuthorizedClient("expense-client-authorization-code") OAuth2AuthorizedClient authorizedClient){
+    public ModelAndView getAllView(@RegisteredOAuth2AuthorizedClient("expense-service-authorization-code") OAuth2AuthorizedClient authorizedClient){
         List<Expense> expenses = expenseService.getExpenses();
 
         if(!model.containsKey("selectedExpense"))
