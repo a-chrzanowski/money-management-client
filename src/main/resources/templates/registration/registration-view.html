@@ -22,7 +22,7 @@
                         </div>
                             <div class="tooltip-form row g-1"
                                  data-text="Only: &#010;- lowercase and uppercase letters &#010;- special characters (-), (_), (.)">
-                                <input type="text" class="form-control" placeholder="Username (required)" th:field="*{username}" th:errorclass="input-validation-error" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="Username (required)" th:field="*{username}" th:errorclass="input-validation-error">
                             </div>
                             <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="div-validation-error">
                                 <p th:text="${err}"></p>
