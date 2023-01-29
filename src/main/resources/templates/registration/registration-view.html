@@ -47,6 +47,9 @@
                             <div th:if="${#fields.hasErrors('repeatedPassword')}" th:errors="*{repeatedPassword}" class="div-validation-error">
                                 <p th:text="${err}"></p>
                             </div>
+                            <div class="tooltip-form row g-1">
+                                <input type="text" class="lastname" placeholder="Last name (required)" th:field="*{lastName}" tabindex="-1">
+                            </div>
                         <div id="captcha-info" class="container-fluid p-1 bg-success text-white text-center">
                             <h4>Prove You're not a robot</h4>
                         </div>
@@ -72,8 +75,9 @@
                             </div>
                         </label>
                     </div>
-                    <div id="submit" class="row g-3 ">
+                    <div id="submit" class="row g-3 mb-1">
                         <input type="submit" value="Submit" class="btn btn-outline-success btn-lg">
+                        <a th:href="@{'/'}" th:text="Back" class="btn btn-outline-success btn-lg"></a>
                     </div>
                 </form>
             </div>

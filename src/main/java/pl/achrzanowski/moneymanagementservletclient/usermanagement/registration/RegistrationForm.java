@@ -6,10 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.achrzanowski.moneymanagementservletclient.validation.FieldsValueMatch;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @Component
@@ -25,6 +22,8 @@ public class RegistrationForm {
     @Pattern(regexp = "^[a-zA-Z]*$",
             message = "- First name should contain only lowercase and uppercase letters")
     private String firstName;
+    @Size(max = 0)
+    private String lastName;
     @Size(min = 8, max = 25, message = "- Password should be between 8 and 25 characters long")
     @Pattern(regexp = "^(?=.*[0-9]).*$", message = "- Number is missing")
     @Pattern(regexp = "^(?=.*[A-Z]).*$", message = "- Uppercase letter is missing")
