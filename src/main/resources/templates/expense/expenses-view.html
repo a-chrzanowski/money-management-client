@@ -6,6 +6,9 @@
     </head>
     <body style="background-color:#666666" text="white">
         <h2 align="center">Expenses Client</h2>
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout">
+        </form>
         <div th:replace="expense/save-expense-view :: saveForm"></div>
         <div style="display: inline-block; vertical-align: top;">
             <div th:replace="expense/selected-expense-view :: selectedExpenseFragment"></div>

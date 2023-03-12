@@ -14,6 +14,7 @@ import pl.achrzanowski.moneymanagementservletclient.expensemanagement.category.C
 import pl.achrzanowski.moneymanagementservletclient.expensemanagement.importance.ImportanceService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
