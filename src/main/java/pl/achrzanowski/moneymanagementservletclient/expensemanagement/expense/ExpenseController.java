@@ -34,8 +34,11 @@ public class ExpenseController {
     private final Map<String, Object> model = new HashMap<>();
 
     @GetMapping("/expense/all")
-    public ModelAndView getAllView(@RegisteredOAuth2AuthorizedClient("expense-service-authorization-code") OAuth2AuthorizedClient authorizedClient){
-        List<Expense> expenses = expenseService.getExpenses();
+    public ModelAndView getAllView(
+            @RegisteredOAuth2AuthorizedClient("expense-service-authorization-code") OAuth2AuthorizedClient authorizedClient,
+            Principal principal
+    ){
+        List<Expense> expenses = expenseService.getExpenses(principal.getName());
 
         if(!model.containsKey("selectedExpense"))
             if(expenses.isEmpty())
@@ -70,11 +73,13 @@ public class ExpenseController {
 
     @PostMapping("/expense/save")
     public String save(@Valid @ModelAttribute("newExpense") Expense newExpense,
-                       BindingResult bindingResult){
+                       BindingResult bindingResult,
+                       Principal principal){
         String errorsAttributeName = BindingResult.class.getName() + ".newExpense";
         if(bindingResult.hasErrors()){
             model.put(errorsAttributeName, bindingResult);
         } else {
+            newExpense.setOwner(principal.getName());
             model.remove(errorsAttributeName);
             model.put("selectedExpense", expenseService.save(newExpense));
         }
