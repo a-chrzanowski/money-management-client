@@ -22,5 +22,6 @@ public class Expense {
     @NotEmpty(message = "Date must be selected")
     private String occurrenceDate;
     private String createdDate;
+    private String owner;
 
 }

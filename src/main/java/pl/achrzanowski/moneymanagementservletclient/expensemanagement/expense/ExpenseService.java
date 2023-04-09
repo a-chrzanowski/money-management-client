@@ -23,8 +23,9 @@ public class ExpenseService {
     @Value("${expenseServiceClientRegistrationId}")
     private String expenseServiceClientRegistrationId;
 
-    public List<Expense> getExpenses(){
-        return webClient.get().uri(expenseServiceUrl + "/expense")
+    public List<Expense> getExpenses(String owner){
+        return webClient.get()
+                .uri(expenseServiceUrl + "/expense?owner=" + owner)
                 .attributes(clientRegistrationId(expenseServiceClientRegistrationId))
                 .retrieve()
                 .bodyToFlux(Expense.class)
@@ -34,7 +35,10 @@ public class ExpenseService {
     }
 
     public Expense getExpense(String id){
-        return webClient.get().uri(expenseServiceUrl + "/expense/" + id)
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                    .path(expenseServiceUrl + "/expense/{id}")
+                    .build(id))
                 .attributes(clientRegistrationId(expenseServiceClientRegistrationId))
                 .retrieve()
                 .bodyToMono(Expense.class)
@@ -43,7 +47,8 @@ public class ExpenseService {
     }
 
     public Expense save(Expense expense){
-        return webClient.post().uri(expenseServiceUrl + "/expense")
+        return webClient.post()
+                .uri(expenseServiceUrl + "/expense")
                 .attributes(clientRegistrationId(expenseServiceClientRegistrationId))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(expense)
@@ -53,7 +58,11 @@ public class ExpenseService {
     }
 
     public void delete(String id){
-        webClient.delete().uri(expenseServiceUrl + "/expense/" + id)
+        webClient.delete()
+                .uri(uriBuilder -> uriBuilder
+                    .path(expenseServiceUrl + "/expense")
+                    .queryParam("id", id)
+                    .build())
                 .attributes(clientRegistrationId(expenseServiceClientRegistrationId))
                 .retrieve()
                 .toBodilessEntity()
