@@ -22,12 +22,6 @@ public class SecurityConfig {
                                 .antMatchers("/registration/**").permitAll()
                                 .antMatchers("/content/**").permitAll()
                                 .anyRequest().authenticated())
-                .logout(
-                        logout -> logout
-                                .invalidateHttpSession(true)
-                                .clearAuthentication(true)
-                                .logoutSuccessUrl("/")
-                                .deleteCookies("JSESSIONID"))
                 .oauth2Login(oauth2Login ->
                     oauth2Login.loginPage("/oauth2/authorization/" + expenseServiceClientRegistrationId))
                 .oauth2Client(Customizer.withDefaults());
